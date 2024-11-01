@@ -166,7 +166,6 @@ public class RegistrarCaractGeneralesActivity extends AppCompatActivity {
                 modalidades.add(new CatalogModel(model.getMotiveId(), model.getMotiveName()));
             }
         }
-        System.out.println("gola);
         ArrayAdapter<CatalogModel> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modalidades);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spnTipoInmueble.setAdapter(adapter);
