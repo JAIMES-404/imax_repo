@@ -90,10 +90,10 @@
 
                     <com.github.gcacace.signaturepad.views.SignaturePad
                         android:id="@+id/signature_pad"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:background="@android:color/white"
-                        android:layout_marginBottom="16dp"/>
+                        android:layout_width="367dp"
+                        android:layout_height="225dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@android:drawable/edit_text" />
 
                     <Button
                         android:id="@+id/btn_clear_signature"
