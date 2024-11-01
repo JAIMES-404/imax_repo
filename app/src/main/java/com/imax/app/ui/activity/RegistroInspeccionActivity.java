@@ -11,6 +11,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -201,8 +203,34 @@ public class RegistroInspeccionActivity extends AppCompatActivity {
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
 
-        defaultBackground = ContextCompat.getDrawable(this, R.drawable.default_border);
+        configurarTextWatcher(edtContacto);
     }
+
+    private void configurarTextWatcher(EditText editText) {
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Verifica si el campo no está vacío
+                if (!s.toString().trim().isEmpty()) {
+                    // Cambia el fondo a su estado por defecto
+                    editText.setBackgroundResource(android.R.drawable.edit_text); // Usando el drawable de sistema directamente
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Si el campo está vacío, aplica el borde de error
+                if (s.toString().trim().isEmpty()) {
+                    editText.setBackground(ContextCompat.getDrawable(RegistroInspeccionActivity.this, R.drawable.error_border)); // Aplica el borde de error
+                }
+            }
+        });
+    }
+
+
 
     private void loadDataIfExists(String numero){
         InspeccionRequest inspeccionRequest =  daoExtras.getListAsignacionByNumero(numero);
@@ -305,7 +333,6 @@ public class RegistroInspeccionActivity extends AppCompatActivity {
         if (!isValid) {
             Toast.makeText(this, "Por favor, complete todos los campos obligatorios", Toast.LENGTH_SHORT).show();
         }
-
         return isValid;
     }
     private boolean validarEditText(EditText editText, Drawable errorBackground) {
@@ -317,6 +344,7 @@ public class RegistroInspeccionActivity extends AppCompatActivity {
             return true;
         }
     }
+
     private boolean validarSpinner(Spinner spinner, Drawable errorBackground) {
         String defaultValue = "Seleccione una opción";
         if (spinner.getSelectedItem().toString().equals(defaultValue)) {

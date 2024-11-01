@@ -146,7 +146,8 @@
                     android:id="@+id/ed_contacto_situ"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:drawable/edit_text"                    android:padding="10dp"
+                    android:background="@android:drawable/edit_text"
+                    android:padding="10dp"
                     android:hint="Contacto"
                     android:gravity="top"
                     android:textSize="@dimen/text_size_small" />

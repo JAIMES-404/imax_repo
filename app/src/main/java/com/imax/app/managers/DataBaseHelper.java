@@ -920,10 +920,18 @@ public class DataBaseHelper extends SQLiteAssetHelper {
                 }
 
                 if (jsonData.has("motive_id") && !jsonData.isNull("motive_id")) {
-                    JSONArray motiveArray = jsonData.getJSONArray("motive_id");
-                    if (motiveArray.length() > 1) {
-                        cv.put("motive_id", motiveArray.getInt(0)); // ID
-                        cv.put("motive_name", motiveArray.getString(1)); // Descripción
+                    if (jsonData.get("motive_id") instanceof JSONArray) {
+                        JSONArray motiveArray = jsonData.getJSONArray("motive_id");
+                        if (motiveArray.length() > 1) {
+                            cv.put("motive_id", motiveArray.getInt(0));
+                            cv.put("motive_name", motiveArray.getString(1));
+                        }
+                    } else if (jsonData.get("motive_id") instanceof Boolean) {
+                        boolean motiveBool = jsonData.getBoolean("motive_id");
+                        if (!motiveBool) {
+                            cv.put("motive_id", 0);
+                            cv.put("motive_name", "Sin motivo");
+                        }
                     }
                 }
 
