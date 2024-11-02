@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.MultiAutoCompleteTextView;
@@ -158,7 +159,83 @@ public class RegistrarCaractGeneralesActivity extends AppCompatActivity {
         progressDialog.setCancelable(false);
 
         defaultBackground = ContextCompat.getDrawable(this, R.drawable.default_border);
+
+        loadDataRecibeInmueble(null);
+
+        spnRecibeInmueble.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Verifica que la opción seleccionada no sea la opción por defecto "Seleccione una opción"
+                if (position > 0) { // Suponiendo que la posición 0 es "Seleccione una opción"
+                    // Restablecer el fondo del Spinner al fondo predeterminado
+                    spnRecibeInmueble.setBackground(ContextCompat.getDrawable(RegistrarCaractGeneralesActivity.this, android.R.drawable.edit_text));// Asegúrate de usar el drawable correcto
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // No hace nada
+            }
+        });
+
+        cbVivienda.setOnCheckedChangeListener(checkboxListener);
+        cbComercio.setOnCheckedChangeListener(checkboxListener);
+        cbIndustria.setOnCheckedChangeListener(checkboxListener);
+        cbEducativo.setOnCheckedChangeListener(checkboxListener);
+        cbOther.setOnCheckedChangeListener(checkboxListener);
+
+        edtNPisos.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No hacer nada aquí
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Verifica si el EditText no está vacío
+                if (!TextUtils.isEmpty(s)) {
+                    edtNPisos.setBackground(ContextCompat.getDrawable(RegistrarCaractGeneralesActivity.this, android.R.drawable.edit_text)); // Restablecer el fondo predeterminado
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable s) {
+                // No hacer nada aquí
+            }
+        });
+
+        edtDistribucion.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // No hacer nada aquí
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // Verifica si el EditText no está vacío
+                if (!TextUtils.isEmpty(s)) {
+                    edtDistribucion.setBackground(ContextCompat.getDrawable(RegistrarCaractGeneralesActivity.this, android.R.drawable.edit_text)); // Restablecer el fondo predeterminado
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // No hacer nada aquí
+            }
+        });
+
     }
+
+    private CompoundButton.OnCheckedChangeListener checkboxListener = new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            // Verifica si al menos uno de los checkboxes está marcado
+            if (cbVivienda.isChecked() || cbComercio.isChecked() || cbIndustria.isChecked() ||
+                    cbEducativo.isChecked() || cbOther.isChecked()) {
+                // Restablecer el fondo del gridCheckbox al fondo predeterminado
+                gridCheckbox.setBackground(defaultBackground);
+            }
+        }
+    };
     private void loadDataTipoInmueble(){
         List<CatalogModel> modalidades = new ArrayList<>();
         for (AsignacionModel model : daoExtras.getListAsignacion()) {
@@ -287,10 +364,10 @@ public class RegistrarCaractGeneralesActivity extends AppCompatActivity {
 
         if (!cbVivienda.isChecked() && !cbComercio.isChecked() && !cbIndustria.isChecked()
                 && !cbEducativo.isChecked() && !cbOther.isChecked()) {
-            tvGridInmueble.setBackground(errorBackground);
+            gridCheckbox.setBackground(errorBackground);
             isValid = false;
         } else {
-            tvGridInmueble.setBackground(defaultBackground);
+            gridCheckbox.setBackground(defaultBackground);
         }
 
         isValid &= validarSpinner(spnTipoInmueble, errorBackground);
@@ -301,7 +378,6 @@ public class RegistrarCaractGeneralesActivity extends AppCompatActivity {
         if (!isValid) {
             Toast.makeText(this, "Por favor, complete todos los campos obligatorios", Toast.LENGTH_SHORT).show();
         }
-
         return isValid;
     }
 
