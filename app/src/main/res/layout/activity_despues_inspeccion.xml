@@ -60,7 +60,6 @@
                             android:layout_height="wrap_content"
                             android:text="SI"
                             android:checked="false" />
-
                         <RadioButton
                             android:id="@+id/radio_no_tiene"
                             android:layout_width="wrap_content"

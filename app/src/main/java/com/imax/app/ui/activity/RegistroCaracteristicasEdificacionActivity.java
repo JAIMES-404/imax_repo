@@ -11,9 +11,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -83,7 +86,6 @@ public class RegistroCaracteristicasEdificacionActivity extends AppCompatActivit
     private MultiAutoCompleteTextView multiAutoCompleteTextView, multiCompleteMuros, multiCompleteRevestimiento,
             multiCompletePisos, multiCompletePisosCocina, multiCompleteParedesCocina,multiCompletePisosBaños,
             multiCompleteParedesBaño;
-
     private App app;
     private android.app.AlertDialog.Builder dialogBuilder;
     private android.app.AlertDialog dialog;
@@ -135,7 +137,6 @@ public class RegistroCaracteristicasEdificacionActivity extends AppCompatActivit
         spnSanitario = findViewById(R.id.spn_sanitarios);
         spnIss = findViewById(R.id.spn_iss);
         spnIiee = findViewById(R.id.spn_iiee);
-
         tv_radioGroup = findViewById(R.id.radioGroup);
         radioGroupSistemaIncendio = findViewById(R.id.radioGroupSistemaIncendio);
         radioTiene = findViewById(R.id.radio_tiene);
@@ -155,7 +156,301 @@ public class RegistroCaracteristicasEdificacionActivity extends AppCompatActivit
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
 
+
+        multiAutoCompleteTextView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // El usuario ha seleccionado la vista: quita el borde rojo
+                    multiAutoCompleteTextView.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+                    // Forzar la apertura de las opciones
+                    multiAutoCompleteTextView.showDropDown();
+                }
+            }
+        });
+
+        multiCompleteMuros.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // El usuario ha seleccionado la vista: quita el borde rojo
+                    multiCompleteMuros.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+
+                    // Forzar la apertura de las opciones
+                    multiCompleteMuros.showDropDown();
+                }
+            }
+        });
+
+        multiCompleteRevestimiento.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // El usuario ha seleccionado la vista: quita el borde rojo
+                    multiCompleteRevestimiento.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+
+                    // Forzar la apertura de las opciones
+                    multiCompleteRevestimiento.showDropDown();
+                }
+            }
+        });
+
+        multiCompletePisos.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus){
+                if(hasFocus){
+                    multiCompletePisos.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+                }
+                multiCompletePisos.showDropDown();
+            }
+        });
+
+        multiCompletePisosCocina.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus){
+                if(hasFocus){
+                    multiCompletePisosCocina.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+                }
+                multiCompletePisosCocina.showDropDown();
+            }
+        });
+
+        multiCompleteParedesCocina.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus){
+                if(hasFocus){
+                    multiCompleteParedesCocina.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+                }
+                multiCompleteParedesCocina.showDropDown();
+            }
+        });
+
+        multiCompletePisosBaños.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus){
+                if(hasFocus){
+                    multiCompletePisosBaños.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+                }
+                multiCompletePisosBaños.showDropDown();
+            }
+        });
+
+        multiCompleteParedesBaño.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus){
+                if(hasFocus){
+                    multiCompleteParedesBaño.setBackground(ContextCompat.getDrawable(v.getContext(), android.R.drawable.edit_text));
+                }
+                multiCompleteParedesBaño.showDropDown();
+            }
+        });
+
+        spnTipoPuerta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnTipoPuerta.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnMaterialPuerta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnMaterialPuerta.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnSistemaPuerta.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnSistemaPuerta.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnMarcoVentana.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnMarcoVentana.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnVidrioVentana.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnVidrioVentana.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnSistemaVentana.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnSistemaVentana.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnMuebleCocina.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnMuebleCocina.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnMuebleCocina2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnMuebleCocina2.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnTablero.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnTablero.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+
+        spnLavaderos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnLavaderos.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnSanitarioTipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnSanitarioTipo.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnSanitarioColor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnSanitarioColor.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnSanitario.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnSanitario.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnIss.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnIss.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        spnIiee.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // El usuario ha seleccionado una opción: quita el borde rojo
+                spnIiee.setBackground(ContextCompat.getDrawable(parent.getContext(), android.R.drawable.edit_text));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Opcional: define qué hacer si no se selecciona nada, si es necesario
+            }
+        });
+
+        radioGroupSistemaIncendio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Cuando el usuario selecciona una opción, quita el borde rojo del tv_radioGroup
+                tv_radioGroup.setBackground(ContextCompat.getDrawable(group.getContext(), R.drawable.default_border)); // Cambia "default_border" por tu fondo sin el borde rojo
+            }
+        });
     }
+
+
 
     private void loadDataIfExists(String numero){
         InspeccionRequest inspeccionRequest =  daoExtras.getListAsignacionByNumero(numero);
@@ -878,11 +1173,10 @@ public class RegistroCaracteristicasEdificacionActivity extends AppCompatActivit
 
         if (radioGroupSistemaIncendio.getCheckedRadioButtonId() == -1) {
             isValid = false;
-            tv_radioGroup.setBackground(errorBackground);
+            tv_radioGroup.setBackground(errorBackground); // Aplica el borde de error
         } else {
-            tv_radioGroup.setBackground(defaultBackground);
+            tv_radioGroup.setBackground(defaultBackground); // Aplica el borde por defecto
         }
-
         return isValid;
     }
 

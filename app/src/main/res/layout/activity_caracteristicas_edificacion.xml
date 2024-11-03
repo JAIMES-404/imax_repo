@@ -25,6 +25,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,6 +76,10 @@
                     android:hint="Especificar"
                     android:gravity="top"
                     android:textSize="@dimen/text_size_small" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -134,6 +143,10 @@
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -181,6 +194,10 @@
                     android:hint="Especificar"
                     android:gravity="top"
                     android:textSize="@dimen/text_size_small" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <LinearLayout
@@ -253,6 +270,10 @@
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -324,6 +345,10 @@
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -393,6 +418,10 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
             <LinearLayout
@@ -525,6 +554,10 @@
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -631,6 +664,10 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -660,32 +697,33 @@
 
                 <TextView
                     android:id="@+id/radioGroup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sistema contra incendio"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
                     android:layout_marginTop="11dp"
-                    android:textSize="@dimen/text_size_small"
-                    android:textColor="#00796B"/>
+                    android:text="Sistema contra incendio"
+                    android:textColor="#00796B"
+                    android:textSize="@dimen/text_size_small" />
+
                 <RadioGroup
-                    android:id="@+id/radioGroupSistemaIncendio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <RadioButton
-                        android:id="@+id/radio_tiene"
+                        android:id="@+id/radioGroupSistemaIncendio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tiene"
-                        android:checked="false" />
-                    <RadioButton
-                        android:id="@+id/radio_no_tiene"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="No tiene"
-                        android:checked="false" />
+                        android:orientation="horizontal">
 
-                </RadioGroup>
+                        <RadioButton
+                            android:id="@+id/radio_tiene"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="Tiene" />
 
+                        <RadioButton
+                            android:id="@+id/radio_no_tiene"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="No tiene" />
+                    </RadioGroup>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -704,6 +742,10 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
             <LinearLayout
@@ -748,6 +790,10 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:textSize="@dimen/text_size_small" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
         </LinearLayout>
