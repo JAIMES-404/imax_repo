@@ -143,7 +143,26 @@ public class RegistroDespuesInspeccionActivity extends AppCompatActivity impleme
         progressDialog = new ProgressDialog(RegistroDespuesInspeccionActivity.this);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);
+
+        radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                //
+                radioGroup1.setBackground(ContextCompat.getDrawable(group.getContext(), R.drawable.default_border));
+            }
+        });
+
+        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // Cuando el usuario selecciona una opción, quita el borde rojo del tv_radioGroup
+                radioGroup2.setBackground(ContextCompat.getDrawable(group.getContext(), R.drawable.default_border));
+            }
+        });
     }
+
+
+
 
     private void loadDataIfExists(String numero){
         InspeccionRequest inspeccionRequest =  daoExtras.getListAsignacionByNumero(numero);
@@ -233,15 +252,15 @@ public class RegistroDespuesInspeccionActivity extends AppCompatActivity impleme
 
         if (radioGroup1.getCheckedRadioButtonId() == -1) {
             isValid = false;
-            tv_radioGroup.setBackground(errorBackground);
+            radioGroup1.setBackground(errorBackground);
         } else {
-            tv_radioGroup.setBackground(defaultBackground);
+            radioGroup1.setBackground(defaultBackground);
         }
         if (radioGroup2.getCheckedRadioButtonId() == -1) {
             isValid = false;
-            tv_radioGroup2.setBackground(errorBackground);
+            radioGroup2.setBackground(errorBackground);
         } else {
-            tv_radioGroup2.setBackground(defaultBackground);
+            radioGroup2.setBackground(defaultBackground);
         }
 
         return isValid;

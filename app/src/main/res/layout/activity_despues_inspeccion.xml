@@ -48,24 +48,27 @@
                         android:textSize="@dimen/text_size_small"
                         android:textColor="#00796B"
                         android:layout_marginBottom="8dp"/>
+
                     <RadioGroup
                         android:id="@+id/radioGroup_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="16dp">
+                        android:layout_width="114dp"
+                        android:layout_height="58dp"
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
+
                         <RadioButton
                             android:id="@+id/radio_tiene"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SI"
-                            android:checked="false" />
+                            android:checked="false"
+                            android:text="SI" />
+
                         <RadioButton
                             android:id="@+id/radio_no_tiene"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="NO"
-                            android:checked="false" />
+                            android:checked="false"
+                            android:text="NO" />
                     </RadioGroup>
                     <TextView
                         android:id="@+id/tv_especificar_1"
@@ -95,8 +98,8 @@
                         android:textColor="#00796B"/>
                     <RadioGroup
                         android:id="@+id/radioGroup_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="114dp"
+                        android:layout_height="58dp"
                         android:orientation="horizontal"
                         android:layout_marginBottom="16dp">
 
